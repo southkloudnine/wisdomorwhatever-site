@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WOW</title>
+<style>
+  :root{
+    --bg:#FBEAF0;
+    --ink:#4A1425;
+    --ink-soft:#8C5460;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#241016;
+      --ink:#F7E3E8;
+      --ink-soft:#CB98A5;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#241016;
+    --ink:#F7E3E8;
+    --ink-soft:#CB98A5;
+    color-scheme: dark;
+  }
+  *{ box-sizing:border-box; }
+  html, body{ height:100%; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .voice{ font-family:"Instrument Serif", Georgia, serif; font-weight:400; }
+  .wrap{ text-align:center; max-width:420px; }
+  h1{ font-size:56px; margin:0; }
+  .tag{ font-size:16px; color:var(--ink-soft); margin:6px 0 28px; }
+  nav{ display:flex; gap:20px; justify-content:center; font-size:15px; }
+  a{ color:var(--ink); font-weight:600; text-decoration:underline; }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap">
+</head>
+<body>
+  <div class="wrap">
+    <h1 class="voice">WOW</h1>
+    <p class="tag">wisdom, or whatever.</p>
+    <nav>
+      <a href="/privacy">privacy policy</a>
+      <a href="/support">support</a>
+    </nav>
+  </div>
+</body>
+</html>
