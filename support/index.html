@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WOW Support</title>
+</head>
+<body>
+<style>
+  :root{
+    --bg:#FBEAF0;
+    --surface:#FFFFFF;
+    --border:#EAD3D9;
+    --ink:#4A1425;
+    --ink-soft:#8C5460;
+    --rule:#E3B8C4;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#241016;
+      --surface:#2E151D;
+      --border:#4A2530;
+      --ink:#F7E3E8;
+      --ink-soft:#CB98A5;
+      --rule:#5A2E3A;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#241016;
+    --surface:#2E151D;
+    --border:#4A2530;
+    --ink:#F7E3E8;
+    --ink-soft:#CB98A5;
+    --rule:#5A2E3A;
+    color-scheme: dark;
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .voice{ font-family:"Instrument Serif", Georgia, serif; font-weight:400; }
+
+  .wrap{ max-width:640px; margin:0 auto; padding:48px 16px 72px; }
+
+  .eyebrow{ font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft); margin-bottom:10px; }
+  h1{ font-size:38px; margin:0 0 10px; text-wrap:balance; }
+  .lede{ font-size:16.5px; line-height:1.6; color:var(--ink); margin:0 0 32px; max-width:56ch; }
+
+  .contact-box{
+    display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:18px 20px; margin-bottom:40px;
+  }
+  .contact-box .label{ font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:4px; }
+  .contact-box .addr{ font-size:17px; font-weight:600; }
+  .contact-box a{ color:var(--ink); }
+  .copy-btn{
+    font-size:13px; font-weight:600; color:var(--ink); background:var(--bg);
+    border:1px solid var(--border); border-radius:99px; padding:7px 14px; cursor:pointer;
+  }
+
+  section{ margin-top:28px; padding-top:24px; border-top:1px solid var(--rule); }
+  section:first-of-type{ margin-top:0; padding-top:0; border-top:none; }
+  h2{ font-size:19px; margin:0 0 8px; }
+  p{ font-size:15px; line-height:1.6; margin:0; max-width:62ch; }
+
+  footer{ margin-top:44px; padding-top:20px; border-top:1px solid var(--rule); font-size:13px; color:var(--ink-soft); }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap">
+
+<div class="wrap">
+  <div class="eyebrow">WOW &middot; wisdom, or whatever.</div>
+  <h1 class="voice">Support</h1>
+  <p class="lede">Questions, a bug, or an idea for a topic &mdash; get in touch any time. We read everything and usually reply within a couple of days.</p>
+
+  <div class="contact-box">
+    <div>
+      <div class="label">Email</div>
+      <span class="addr" id="emailText"><a href="mailto:wisdomorwhateverapp@gmail.com">wisdomorwhateverapp@gmail.com</a></span>
+    </div>
+    <button class="copy-btn" id="copyBtn" type="button">copy</button>
+  </div>
+
+  <section>
+    <h2 class="voice">The tv only shows what's on my phone</h2>
+    <p>That's mirroring, and it's expected &mdash; an iPhone can't show the slides on a tv while showing something different on its own screen. During a session, tap the expand button in the top-right corner so the phone (and the tv) show just the slide. On an iPad with Stage Manager, there's a way to keep the notes on the iPad and put only the slides on the tv &mdash; it's covered on the "tv & airplay" page inside the app.</p>
+  </section>
+
+  <section>
+    <h2 class="voice">How do I change how often my family meets?</h2>
+    <p>Open Settings from the gear icon on the topic list, and adjust how often and when there. The poster and closing slide update to match automatically.</p>
+  </section>
+
+  <section>
+    <h2 class="voice">Can I start over?</h2>
+    <p>Yes &mdash; Settings has a "start over" option that unchecks every topic you've marked covered. It asks you to confirm first, since it can't be undone.</p>
+  </section>
+
+  <section>
+    <h2 class="voice">Does WOW store any of my data?</h2>
+    <p>Only on your own device &mdash; which topics you've covered and your family's schedule. Nothing is ever sent anywhere. The full details are in the <a href="/privacy">privacy policy</a>.</p>
+  </section>
+
+  <footer>WOW &middot; wisdom, or whatever.</footer>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('copyBtn');
+  var email = 'wisdomorwhateverapp@gmail.com';
+  btn.addEventListener('click', function(){
+    function fallback(){
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById('emailText'));
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function(){
+        btn.textContent = 'copied';
+        setTimeout(function(){ btn.textContent = 'copy'; }, 1500);
+      }, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
